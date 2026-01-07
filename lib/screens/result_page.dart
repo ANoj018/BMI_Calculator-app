@@ -1,5 +1,7 @@
-import 'package:bmi_app/screens/home_page.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/custom_button.dart';
+import '../widgets/shadow_container.dart';
 
 class ResultPage extends StatefulWidget {
   const ResultPage({

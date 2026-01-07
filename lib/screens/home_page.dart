@@ -1,7 +1,11 @@
-import 'package:bmi_app/bmi_calculator.dart';
-import 'package:bmi_app/result_page.dart';
+import 'package:bmi_app/constants/app_colors.dart';
+import 'package:bmi_app/controller/bmi_calculator.dart';
+import 'package:bmi_app/screens/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
+
+import '../widgets/custom_button.dart';
+import '../widgets/shadow_container.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -94,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                     child: const Icon(
                                       Icons.remove,
-                                      color: Colors.blue,
+                                      color: AppColors.themecolor,
                                     ),
                                   ),
                                 ],
@@ -236,7 +240,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           // height: 100,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: Colors.blue,
+                            color: AppColors.themecolor,
                           ),
                           child: RotatedBox(
                             quarterTurns: 3,
@@ -345,7 +349,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => ResultPage(
-                        calculatedBmi: bmiCalculator.bmi.toStringAsFixed(1),
+                        calculatedBmi: calculatedBmi.toStringAsFixed(1),
                         rating: rating,
                         ratingColor: ratingColor,
                         suggestion: suggestion,
@@ -355,71 +359,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class ShadowContainer extends StatelessWidget {
-  const ShadowContainer({
-    required this.child,
-    this.shadowColor = Colors.red,
-    this.height,
-    this.width,
-    super.key,
-  });
-
-  final Widget child;
-  final Color shadowColor;
-  final double? height;
-  final double? width;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(color: shadowColor, offset: Offset(5, 5), blurRadius: 5),
-        ],
-        color: Colors.white,
-      ),
-      height: height,
-      width: width,
-      child: Padding(padding: const EdgeInsets.only(top: 30), child: child),
-    );
-  }
-}
-
-class CustomButton extends StatelessWidget {
-  const CustomButton({required this.buttonText, this.onTap, super.key});
-
-  final String buttonText;
-  final void Function()? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 80,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Colors.blue,
-        ),
-        child: Center(
-          child: Center(
-            child: Text(
-              buttonText,
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.w800,
-                color: Colors.white,
-              ),
-            ),
           ),
         ),
       ),
